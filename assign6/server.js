@@ -349,11 +349,7 @@ const server = http.createServer((req, res) => {
   <section class="max-w-6xl mx-auto px-6 py-20 ">
     <!-- Image -->
     <div class="flex-1">
-      <img
-        src="https://popsy-assets.6d7f1376eb77bb5467178bd740961d17.r2.cloudflarestorage.com/notion/data-analysis.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=74b6c77827cafff9c0444f8a29156c5e%2F20260117%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260117T104108Z&X-Amz-Expires=900&X-Amz-Signature=b86c5090dcf1b0ea549bd91f1c630befd3dac8da0d137d106afd4834a630acfc&X-Amz-SignedHeaders=host&response-content-disposition=inline&x-amz-checksum-mode=ENABLED&x-id=GetObject"
-        alt="About Illustration"
-        class="w-full max-w-md mx-auto"
-      />
+      <img src="https://popsy-assets.6d7f1376eb77bb5467178bd740961d17.r2.cloudflarestorage.com/notion/cloud-computing.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=74b6c77827cafff9c0444f8a29156c5e%2F20260117%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260117T134029Z&X-Amz-Expires=900&X-Amz-Signature=2fdb120b2a57aa6fd9910ca2ae8d68df15ef5bdd04a461e81d4b4d4ba7fb2795&X-Amz-SignedHeaders=host&response-content-disposition=inline&x-amz-checksum-mode=ENABLED&x-id=GetObject" alt=" Illustration" class="w-full max-w-md mx-auto"/>
       <h3 class="text-center text-2xl">Page Not Found 404!</h3>
     </div>
 
