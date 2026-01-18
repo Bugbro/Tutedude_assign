@@ -5,185 +5,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Laundry Services</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <script type="text/javascript">
-      (function(){
-          emailjs.init({
+      (function () {
+        emailjs.init({
           publicKey: "HoUfKPtT3Mqgw6vXj",
-      });
-    })();
-</script>
+        });
+      })();
+    </script>
   </head>
-  <body class="font-mono">
-
-    <!-- navbar start here -->
-    <header id="navbar" class="w-full relative">
-      <nav class="flex items-center justify-between h-16 sm:h-20 mx-6 my-2">
-        <div class="text-2xl font-semibold">CleanDry</div>
-        <div id="nav-menu" class="absolute top-0 left-[-100%] lg:left-0 min-h-[100vh] w-full backdrop-blur-sm flex flex-col items-center justify-center duration-300 overflow-hidden lg:static lg:backdrop-blur-none gap-4" >
-          <ul class="nav-link flex flex-col items-center gap-8 lg:flex-row " >
-            <li class="hover:border-b-2 duration-300 border-sky-500"><a href="#home">HOME</a></li>
-            <li class="hover:border-b-2 duration-300 border-sky-500" ><a href="#services">SERVICES</a></li>
-            <li class="hover:border-b-2 duration-300 border-sky-500" ><a href="#about">ABOUT US</a></li>
-            <li class="hover:border-b-2 duration-300 border-sky-500" ><a href="#contact">CONTACT US</a></li>
+  <body>
+    <header id="navbar" class="header">
+      <nav class="navbar">
+        <div class="logo">CleanDry</div>
+        
+        <div id="nav-menu" class="nav-menu">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="#home">HOME</a></li>
+            <li class="nav-item"><a href="#services">SERVICES</a></li>
+            <li class="nav-item"><a href="#about">ABOUT US</a></li>
+            <li class="nav-item"><a href="#contact">CONTACT US</a></li>
           </ul>
-          <div class=" lg:absolute right-10 cursor-pointer bg-sky-300 text-sky-800 rounded-xl px-5 py-2 text-lg hover:text-white duration-300 ">UserName</div>
-          <!-- washing machine image in navbar -->
-          <div class="absolute bottom-0 -right-10 -rotate-30 lg:hidden"><img src="assests/nav_png.png" class="w-32" /></div>
-          <div class="absolute -top-5 -left-5 rotate-30 lg:hidden"><img src="assests/nav_png.png" class="w-32" /></div>
-
+          <div class="user-badge">UserName</div>
+          
+          <div class="nav-deco bottom-deco">
+            <img src="assests/nav_png.png" alt="decoration" />
+          </div>
+          <div class="nav-deco top-deco">
+            <img src="assests/nav_png.png" alt="decoration" />
+          </div>
         </div>
-        <div class="w-10 z-50 lg:hidden"><img src="assests/menu.png" alt="Menu_icon" id="hamburger" /></div>
-        <!-- menu icon -->
+
+        <div class="hamburger-icon">
+          <img src="assests/menu.png" alt="Menu_icon" id="hamburger" />
+        </div>
       </nav>
     </header>
 
-    <!-- main body -->
-
-    <div id="home" class="flex flex-col lg:flex-row items-center justify-center h-vh gap-4 px-8 mt-10">
-      <div class="flex flex-col items-start w-full lg:w-1/2 mx-4 px-4 gap-4">
-        <div class="text-6xl :text-7xl font-bold">Revitalize Your Clothes with Expert</div>
-        <h2 class="text-5xl lg:text-6xl font-semibold text-sky-600">Laundry Services</h2>
-        <p class="text-xl text-gray-500">From premium dry cleaning to swift wash and fold, we deliver care and convenience. Schedule a pickup and rediscover the freshness of your clothes today!</p>
-        <a class="flex items-center gap-3 bg-sky-300 px-7 py-4 rounded-xl text-white" href="#services"><img class="w-5" src="assests/calendr.png" alt="Book Now">Book a service today!</a>
+    <div id="home" class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Revitalize Your Clothes with Expert</h1>
+        <h2 class="hero-subtitle">Laundry Services</h2>
+        <p class="hero-desc">
+          From premium dry cleaning to swift wash and fold, we deliver care and
+          convenience. Schedule a pickup and rediscover the freshness of your
+          clothes today!
+        </p>
+        <a class="btn-primary" href="#services">
+          <img class="icon-small" src="assests/calendr.png" alt="Book Now" />
+          Book a service today!
+        </a>
       </div>
-      <img class="w-full lg:w-1/2" src="assests/main_img.png" alt="" />
+      <img class="hero-image" src="assests/main_img.png" alt="Laundry Service" />
     </div>
 
-    <!-- our achivements -->
-     <div class="flex flex-col gap-8 lg:gap-0 lg:flex-row justify-evenly items-center py-8 bg-sky-500 mt-5">
-      <div class="text-5xl font-semibold">Our Achievements</div>
-      <div class="flex justify-between items-center gap-7">
-        <div class="text-xl font-bold border-r-2 pr-4 border-gray-400">15+<br> <span class="text-lg  font-light">Laundry Services</span></div>
-        <div class="text-xl font-bold border-r-2 pr-4 border-gray-400">240+<br> <span class="text-lg  font-light">Happy Customers</span></div>
-        <div class="text-xl font-bold">2+ Yrs<br><span class="text-lg font-light">Experience</span></div>
-      </div>
-     </div>
-
-     <!-- services -->
-      <div id="services" class="flex flex-col gap-4 lg:flex-row items-center justify-center bg-gray-100 pt-10 lg:h-[650px] pb-5 ">
-        <!-- left side -->
-        <div class="flex flex-col gap-4 items-start bg-white rounded-xl w-full lg:w-1/2 px-4 py-4 h-full ">
-          <h2 class="text-3xl font-bold">Our Services</h2>
-          <p class="text-gray-600 border-b pb-5 w-full">Click On the Add Items to add the services in Cart.</p>
-          <!-- here services comes from js -->
-          <div id="servicesDiv" class="border-b pb-5 w-full ">
-
-          </div>
-          <hr>
-          <div class="flex gap-2 items-center text-violet-500"><img class="w-5 h-5" src="assests/question.png" >Add the items to the cart and book now.</div>
+    <div class="achievements-section">
+      <div class="achievements-title">Our Achievements</div>
+      <div class="achievements-stats">
+        <div class="stat-box">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Laundry Services</div>
         </div>
-        <!-- right side -->
-        <div class="flex flex-col gap-2 h-full px-4 overflow-hidden lg:w-1/3 h-full">
-          <div class="flex flex-col gap-2 items-center bg-white rounded-xl">
-            <h3>Added Items</h3>
-            <div class="grid grid-cols-3 gap-4 px-2 bg-gray-200 w-full  ">
-              <p>S.No.</p>
-              <p>Service Name</p>
-              <p>Price</p>
-            </div>
+        <div class="stat-box">
+          <div class="stat-number">240+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-box last">
+          <div class="stat-number">2+ Yrs</div>
+          <div class="stat-label">Experience</div>
+        </div>
+      </div>
+    </div>
 
-            <!-- items added -->
-             <div id="selected"  class="h-44 overflow-y-auto px-2">
-
-             </div>
-
-             <!-- total amount -->
-            <div class="grid grid-cols-2 gap-4 px-2 bg-gray-200 w-full  ">
-              <p>Total</p>
-              <p id="totalPrice">₹ 00</p>
-            </div>
-          </div>
-
-
-          <div class="flex flex-col gap-2 bg-white rounded-xl px-4 py-6 ">
-            <h2 class="text-2xl font-bold">Book Now</h2>
-            <form>
-            <div>
-              Full Name <br>
-              <input class="mt-2 outline-2 outline-gray-300 rounded-xl w-full px-4 py-2" type="text" id="name" placeholder="John Doe" required >
-            </div>
-            
-            <div class="flex gap-4">
-              <div><label for="email">Email ID</label><input  class="mt-2 outline-2 outline-gray-300 rounded-xl w-full px-4 py-2" type="email" id="email" placeholder="email@gmail.com" required></div>
-              <div><label for="number">Number</label><input  class="mt-2 outline-2 outline-gray-300 rounded-xl w-full px-4 py-2" id="phoneNumber" type="tel" placeholder="000000000" required></div>
-            </div>
-            <button onclick="sendMail()" class="text-white bg-sky-600 rounded-xl py-4 mt-5 cursor-pointer w-full">Book Now</button>
-            </form>
-            <p id="emailConfirmMsg"></p>
-          </div>
+    <div id="services" class="services-section">
+      <div class="services-list-container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">
+          Click On the Add Items to add the services in Cart.
+        </p>
+        <div id="servicesDiv" class="services-list"></div>
+        <hr />
+        <div class="service-note">
+          <img class="icon-tiny" src="assests/question.png" />Add the items to
+          the cart and book now.
         </div>
       </div>
 
-      <!-- quality description -->
-       <div id="about" class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mx-10 lg:mx-20 my-4">
-        <div class="flex flex-col gap-4 items-center my-4 text-center">
-          <img class="w-16" src="assests/washing-machine.png" >
-          <h3 class="text-xl font-bold" >Premium Services</h3>
-          <p class="text-gray-500 text-base lg:text-lg">Elevate your wardrobe with our meticlous dry cleaning, ensuring garments look and feel as good as new.</p>
-        </div>
-        <div class="flex flex-col gap-4 items-center my-4 text-center">
-          <img class="w-16" src="assests/support.png" >
-          <h3 class="text-xl font-bold" >Quick Support</h3>
-          <p class="text-gray-500 text-base lg:text-lg">We're committed to providing prompt solutions to ensure your experience is smooth and worry-free.</p>
-        </div>
-        <div class="flex flex-col gap-4 items-center my-4 text-center">
-          <img class="w-16" src="assests/hassle-free.png" >
-          <h3 class="text-xl font-bold" >Hassle Free Delivery</h3>
-          <p class="text-gray-500 text-base lg:text-lg">Enjoy seamless service with our convenient pickup and delivery options, tailored to your schedule.</p>
-        </div>
-        <div class="flex flex-col gap-4 items-center my-4 text-center">
-          <img class="w-16" src="assests/affordable.png" >
-          <h3 class="text-xl font-bold" >Affordable Prices</h3>
-          <p class="text-gray-500 text-base lg:text-lg">Experience expectional care without breaking the bank - our affordable prices make laundry day stress-free.</p>
-        </div>
-       </div>
+      <div class="cart-container">
+        <div class="added-items-card">
+          <h3>Added Items</h3>
+          <div class="cart-header">
+            <p>S.No.</p>
+            <p>Service Name</p>
+            <p>Price</p>
+          </div>
 
-       <!-- subscribe -->
-        <div class="flex flex-col lg:flex-row items-center justify-evenly bg-sky-500 py-8 lg:py-15 lg:px-15 gap-4">
-          <div class="text-3xl lg:text-5xl text-white ">Subscribe to our<br> newsletter</div>
-          <form class="flex flex-col gap-4 items-start">
-            <div class="flex gap-3 flex-col lg:flex-row ">
-              <input class="text-gray-500 bg-sky-200 px-4 py-2 outline-none w-4/3" type="text" placeholder="Full Name" required >
-              <input class="text-gray-500 bg-sky-200 px-4 py-2 outline-none w-4/3" type="email" placeholder="Email" required>
+          <div id="selected" class="cart-items-body"></div>
+
+          <div class="cart-total">
+            <p>Total</p>
+            <p id="totalPrice">₹ 00</p>
+          </div>
+        </div>
+
+        <div class="booking-form-card">
+          <h2 class="form-title">Book Now</h2>
+          <form onsubmit="event.preventDefault(); sendMail();">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="John Doe"
+                required
+                class="form-input"
+              />
             </div>
-            <button class="text-sky-500 bg-gray-200 px-4 py-2 w-1/2 cursor-pointer" type="submit">Subscribe</button>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email ID</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="email@gmail.com"
+                  required
+                  class="form-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="number">Number</label>
+                <input
+                  id="phoneNumber"
+                  type="tel"
+                  placeholder="000000000"
+                  required
+                  class="form-input"
+                />
+              </div>
+            </div>
+            <button type="submit" class="btn-submit">Book Now</button>
           </form>
+          <p id="emailConfirmMsg"></p>
         </div>
+      </div>
+    </div>
 
-        <!-- footer -->
-         <footer class="grid place-content-center grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-gray-200 gap-5 px-10 lg:px-25 py-5 lg:py-10">
-          <div>
-            <h2 class="text-2xl font-bold mb-5">CleanDry</h2>
-            <p class="text-xl">About us</p>
-            <p class="text-gray-500">CleanDry is a private laundry service provided laundry services in Delhi, Chandigarh.</p>
-          </div>
-          <div class="flex flex-col text-gray-500">
-            <h3 class="text-xl mb-2 text-gray-800">Important Links</h3>
-            <a href="#">About us</a>
-            <a href="#">Contact us</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of use</a>
-            <a href="#">Refund Policy</a>
-          </div>
-          <div class="text-gray-500">
-            <h3 class="text-xl text-gray-800">Contact</h3>
-            <p>mail@site.com</p>
-            <p>+91 00000000</p>
-          </div>
-          <div>
-            <h3 class="text-xl mb-2">Follow Us</h3>
-            <div class="flex gap-6 ">
-              <img class="w-5 h-5 cursor-pointer" src="assests/mobile.png" >
-              <img class="w-5 h-5 cursor-pointer" src="assests/twitter (1).png" >
-              <img class="w-5 h-5 cursor-pointer" src="assests/instagram.png" >
-              <img class="w-5 h-5 cursor-pointer" src="assests/play.png" >
-            </div>
-          </div>
-         </footer>
+    <div id="about" class="about-section">
+      <div class="feature-card">
+        <img class="feature-icon" src="assests/washing-machine.png" />
+        <h3 class="feature-title">Premium Services</h3>
+        <p class="feature-desc">
+          Elevate your wardrobe with our meticulous dry cleaning, ensuring
+          garments look and feel as good as new.
+        </p>
+      </div>
+      <div class="feature-card">
+        <img class="feature-icon" src="assests/support.png" />
+        <h3 class="feature-title">Quick Support</h3>
+        <p class="feature-desc">
+          We're committed to providing prompt solutions to ensure your experience
+          is smooth and worry-free.
+        </p>
+      </div>
+      <div class="feature-card">
+        <img class="feature-icon" src="assests/hassle-free.png" />
+        <h3 class="feature-title">Hassle Free Delivery</h3>
+        <p class="feature-desc">
+          Enjoy seamless service with our convenient pickup and delivery options,
+          tailored to your schedule.
+        </p>
+      </div>
+      <div class="feature-card">
+        <img class="feature-icon" src="assests/affordable.png" />
+        <h3 class="feature-title">Affordable Prices</h3>
+        <p class="feature-desc">
+          Experience exceptional care without breaking the bank - our affordable
+          prices make laundry day stress-free.
+        </p>
+      </div>
+    </div>
+
+    <div class="subscribe-section">
+      <div class="subscribe-text">
+        Subscribe to our<br />newsletter
+      </div>
+      <form class="subscribe-form">
+        <div class="subscribe-inputs">
+          <input
+            class="sub-input"
+            type="text"
+            placeholder="Full Name"
+            required
+          />
+          <input
+            class="sub-input"
+            type="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <button class="btn-subscribe" type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-col">
+        <h2 class="footer-logo">CleanDry</h2>
+        <p class="footer-subhead">About us</p>
+        <p class="footer-text">
+          CleanDry is a private laundry service providing laundry services in
+          Delhi, Chandigarh.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Important Links</h3>
+        <a href="#" class="footer-link">About us</a>
+        <a href="#" class="footer-link">Contact us</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of use</a>
+        <a href="#" class="footer-link">Refund Policy</a>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Contact</h3>
+        <p class="footer-text">mail@site.com</p>
+        <p class="footer-text">+91 00000000</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Follow Us</h3>
+        <div class="social-icons">
+          <img class="social-icon" src="assests/mobile.png" />
+          <img class="social-icon" src="assests/twitter (1).png" />
+          <img class="social-icon" src="assests/instagram.png" />
+          <img class="social-icon" src="assests/play.png" />
+        </div>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>

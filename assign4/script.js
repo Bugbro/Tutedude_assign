@@ -59,21 +59,24 @@ const services = [
 let selectedServices = [];
 let totalAmount = 0;
 
-function renderServices(){
-    const servicesDiv =document.getElementById('servicesDiv');
-    servicesDiv.innerHTML = services.map((item)=>(`
-        <div class="flex items-center justify-between gap-4 mb-4">
-            <div>
-                <p>
-                    <img src=${item.image} class="w-5 h-5 mr-2 inline mx-auto">
-                    ${item.title} 
-                    <span class="text-violet-500 text-sm font-bold"> • ₹${item.price}</span>
-                </p>
+function renderServices() {
+    const servicesDiv = document.getElementById('servicesDiv');
+    if(!servicesDiv) return;
+
+    servicesDiv.innerHTML = services.map((item) => (`
+        <div class="service-item-row">
+            <div class="service-info">
+                <img src="${item.image}" class="service-icon">
+                <span class="service-title">${item.title}</span>
+                <span class="service-price"> • ₹${item.price}</span>
             </div>
-            <button onClick="addItem(${item.id})" class="py-2 px-5 rounded-xl cursor-pointer bg-gray-200">${ item.itemAdded ?"Remove Item" : "Add Item"}</button>
+
+            <button onClick="addItem(${item.id})" class="btn-add-item">
+                ${item.itemAdded ? "Remove Item" : "Add Item"}
+            </button>
         </div>
         `)
-    ).join("")
+    ).join("");
 };
 renderServices();
 
@@ -85,10 +88,10 @@ function renderSelected(){
         return;
     }
     selectedDiv.innerHTML = selectedServices.map((item)=>(`
-        <div class="grid grid-cols-3 gap-4  ">
-            <p>${item.id}</p>
-            <p>${item.title}</p>
-            <p>${item.price}</p>
+        <div class="cart-header ">
+            <span>${item.id}</span>
+            <span>${item.title}</span>
+            <span>${item.price}</span>
         </div>
         `)
     ).join("");
