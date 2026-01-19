@@ -4,11 +4,6 @@
   <h3 align="center">Landing Page </h3>
 </div>
 <div align="center">
-      <img src="public/landing2.png" >
-    </a>
-  <h3 align="center">Landing Page 2</h3>
-</div>
-<div align="center">
       <img src="public/home.png" >
     </a>
   <h3 align="center">Home Page </h3>
