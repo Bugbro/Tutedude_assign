@@ -9,9 +9,9 @@ dotenv.config();
 
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const corsOption = {
-    origin: "http://localhost:5173",
+    origin: "http://localhost:https://brilliant-rabanadas-ce03b1.netlify.app",
     credentials: true
 }
 
