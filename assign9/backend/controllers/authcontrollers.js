@@ -2,6 +2,7 @@ import Organization from "../models/Organization.js";
 import User from "../models/User.js";
 import { compareHash, hashValue } from "../utils/hash.js";
 import { otpGen } from "../utils/otpGen.js";
+import { genRandomToken } from "../utils/randomToken.js";
 import { resHandler } from "../utils/resHandler.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import { generateToken } from "../utils/token.js";
@@ -93,6 +94,18 @@ export const verifyOtp = async(req, res)=>{
         user.otp = null;
         user.otpExpiry = null;
         await user.save();
+        
+        const token = generateToken({
+            _id: user._id,
+            role: user.role,
+            orgId: user.organizationId
+        });
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
         return resHandler(res, 200, "Account Verified Successfully.")
 
     } catch (error) {
@@ -118,8 +131,13 @@ export const login = async (req, res) => {
             role: user.role,
             orgId: user.organizationId
         });
-
-        return resHandler(res, 200, "User Login", token);
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
+        return resHandler(res, 200, "User Login");
     } catch (error) {
         console.log("Error while login", error.message);
         return resHandler(res, 500, error.message);
@@ -127,7 +145,7 @@ export const login = async (req, res) => {
 };
 
 //again resend the otp to verify 
-export const resendOtp = async(res, res)=>{
+export const resendOtp = async(req, res)=>{
     try {
         const {email} = req.body;
         if(!email) return resHandler(res, 400, "Please provide email");
@@ -144,6 +162,95 @@ export const resendOtp = async(res, res)=>{
         return resHandler(res, 200, "OTP resend successfully.");
     } catch (error) {
         console.log("Error while resend OTP.", error.message);
+        return resHandler(res, 500, error.message);
+    }
+};
+
+// send otp which forgot password
+export const forgotPassword = async (req, res) => {
+    try {
+        const {email} = req.body;
+        if(!email) return resHandler(res, 400, "Please provide email.");
+        const user = await User.findOne({email});
+        if(!user) return resHandler(res, 404, "User not found.");
+
+        //otp gen and token
+        const otp = otpGen();
+        const resetToken = genRandomToken();
+
+        user.resetPassOtp =  await hashValue(otp);
+        user.resetPassOtpExpiry = Date.now() + 10 * 60 * 1000;
+        user.resetPassToken = await hashValue(resetToken);
+        user.resetPassTokenExpiry = Date.now() + 10 * 60 * 1000;
+
+        await user.save();
+        await sendEmail(email, "Your OTP for reset password ", otp);
+        return resHandler(res, 200, "Reset OTP send successfully.", resetToken, "resetToken");
+
+    } catch (error) {
+        console.log("Error while forgot password.", error.message);
+        return resHandler(res, 500, error.message);
+    }
+};
+
+//verify the reset otp
+export const verifyResetOtp =async (req, res) => {
+    try {
+        const {email, otp} = req.body;
+        if(!email || !otp) return resHandler(res, 400, "Email and OTP reqruied.");
+
+        const user = await User.findOne({email});
+        if(!user) return resHandler(res, 404, "User not found.");
+        if(user.resetPassOtpExpiry < Date.now()){
+            return resHandler(res, 400, "OTP Expired.");
+        }
+        const isOtpMatch = await compareHash(otp, user.resetPassOtp);
+        if(!isOtpMatch){
+            return resHandler(res, 400, "Invalid OTP.");
+        };
+
+        //otp verified here 
+        user.resetPassOtp = null;
+        user.resetPassOtpExpiry = null;
+        await user.save();
+
+        return resHandler(res, 200, "OTP verified succcessfully.")
+
+    } catch (error) {
+        console.log("Error while verify reset otp.", error.message);
+        return resHandler(res, 500, error.message);
+    }
+}
+
+//reset the password usi9ng token
+export const resetPassword = async (req, res) => {
+    try {
+        const {token} = req.query;
+        const {newPassword} = req.body;
+        if(!token || !newPassword){
+            return resHandler(res, 400, "Please provide requried fields.");
+        }
+        const users = await User.find({
+            resetPassTokenExpiry: { $gt: Date.now() }
+        });
+        let validUser = null;
+
+        for(const user of users){
+            if(await compareHash(token, user.resetPassToken)){
+                validUser = user;
+                break;
+            }
+        };
+        if(!validUser) return resHandler(res, 400, "Invalid or Expired token.");
+
+        validUser.password = await hashValue(newPassword);
+        validUser.resetPassToken = null;
+        validUser.resetPassTokenExpiry = null;
+
+        await validUser.save();
+        return resHandler(res, 200, "User password reset successfully.");
+    } catch (error) {
+        console.log("Error while reset password.", error.message);
         return resHandler(res, 500, error.message);
     }
 }
